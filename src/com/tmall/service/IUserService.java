@@ -1,4 +1,4 @@
-package com.tmall.service.impl;
+package com.tmall.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public interface IUserService {
 	public void add(User user);
 	public void delete(int id);
 	public User getById(int id);
-	public User getByName(String name);
+	public List<User> getByName(String name);
 	public User get(String name,String password);
 	public void update(User user);
 	public int getCount();

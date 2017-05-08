@@ -3,10 +3,12 @@ package com.tmall.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tmall.dao.UserDao;
 import com.tmall.entity.User;
-
+import com.tmall.service.IUserService;
+@Service
 public class UserService implements IUserService{
 	
 	@Autowired
@@ -21,26 +23,23 @@ public class UserService implements IUserService{
 
 	@Override
 	public void add(User user) {
-		// TODO Auto-generated method stub
-		
+		this.userDao.add(user);
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		this.userDao.delete(id);
 	}
 
 	@Override
 	public User getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDao.getById(id);
 	}
 
 	@Override
-	public User getByName(String name) {
-		User user = userDao.getByName(name);
-		return user;
+	public List<User> getByName(String name) {
+		List<User> users = userDao.getByName(name);
+		return users;
 	}
 
 	@Override
@@ -52,32 +51,28 @@ public class UserService implements IUserService{
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
-		
+		this.userDao.update(user);
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.userDao.getCount();
 	}
 
 	@Override
 	public List<User> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDao.listAll();
 	}
 
 	@Override
 	public List<User> list(int start, int count) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userDao.list(start, count);
 	}
 
 	@Override
 	public boolean isExist(String name) {
-		User user = this.getByName(name);
-		return !(null == user);
+		List<User> users = this.getByName(name);
+		return !(0 == users.size());
 	}
 
 }

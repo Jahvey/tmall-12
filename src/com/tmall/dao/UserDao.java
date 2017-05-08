@@ -10,7 +10,7 @@ public interface UserDao {
 	public void add(User user);
 	public void delete(int id);
 	public User getById(int id);
-	public User getByName(String name);
+	public List<User> getByName(String name);
 	public User get(@Param("name")String name,@Param("password")String password);
 	public void update(User user);
 	public int getCount();
